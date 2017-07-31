@@ -22,15 +22,6 @@
 # Enable support for chinook sensorhub
 TARGET_USES_CHINOOK_SENSORHUB := false
 
-ifeq ($(TARGET_PREBUILT_KERNEL),)
-  LOCAL_KERNEL := device/lge/bullhead-kernel/Image.gz-dtb
-else
-  LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
-endif
-
-PRODUCT_COPY_FILES := \
-    $(LOCAL_KERNEL):kernel
-
 PRODUCT_COPY_FILES += \
     device/lge/bullhead/init.bullhead.rc:root/init.bullhead.rc \
     device/lge/bullhead/init.bullhead.usb.rc:root/init.bullhead.usb.rc \
@@ -339,7 +330,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # for perfd
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.min_freq_0=384000
+    ro.min_freq_0=384000 \
     ro.min_freq_4=384000
 
 PRODUCT_PROPERTY_OVERRIDES += \
